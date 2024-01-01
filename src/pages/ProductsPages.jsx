@@ -1,15 +1,16 @@
+import Card from "../components/Card";
 import { useProducts } from "../context/ProductContext";
 import styles from "./ProductsPages.module.css";
 
 function ProductsPages() {
   const products = useProducts();
-  console.log(products);
+  
   return (
     <div className={styles.container}>
       <div className={styles.products}>
         {!products.length && <p>Loading...</p>}
-        {products.map(p => (
-          <p key={p.id}>{p.title}</p>
+        {products.map(product => (
+          <Card key={product.id} data={product} />
         ))}
       </div>
       <div>SideBar</div>
