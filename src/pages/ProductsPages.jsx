@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImSearch } from "react-icons/im";
 import { FaListUl } from "react-icons/fa";
 
@@ -9,8 +9,13 @@ import styles from "./ProductsPages.module.css";
 
 function ProductsPages() {
   const products = useProducts();
-  console.log(products)
+  
+  const [displayed, setDisplayed] = useState([]);
   const [search , setSearch] = useState("");
+
+  useEffect(() => {
+    setDisplayed(products);
+  },[products]);
 
   const searchHandler = () => {
     console.log("search")
@@ -34,8 +39,8 @@ function ProductsPages() {
       </div>
       <div className={styles.container}>
         <div className={styles.products}>
-          {!products.length && <Loader />}
-          {products.map(product => (
+          {!displayed.length && <Loader />}
+          {displayed.map(product => (
             <Card key={product.id} data={product} />
           ))}
         </div>
