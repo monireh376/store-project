@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import Loader from "../components/Loader";
 import { useProducts } from "../context/ProductContext";
 import styles from "./ProductsPages.module.css";
+import { filterProducts, searchProducts } from "../helper/helper";
 
 function ProductsPages() {
   const products = useProducts();
@@ -19,7 +20,11 @@ function ProductsPages() {
   },[products]);
 
   useEffect(() => {
-    console.log(query)
+
+    let finalProducts = searchProducts(products, query.search);
+    finalProducts = filterProducts(finalProducts, query.categury);
+
+    setDisplayed(finalProducts);
   },[query])
   const searchHandler = () => {
     setQuery((query) => ({ ...query, search }))
@@ -55,10 +60,10 @@ function ProductsPages() {
           </div>
           <ul onClick={categoryHandler}>
             <li>all</li>
-            <li>Electrinics</li>
-            <li>Jewelry</li>
+            <li>Electronics</li>
+            <li>Jewelery</li>
             <li>Men's Clothing</li>
-            <li>Wemon's Clothing</li>
+            <li>Women's clothing</li>
           </ul>
         </div>
       </div>
