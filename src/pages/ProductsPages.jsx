@@ -12,13 +12,17 @@ function ProductsPages() {
   
   const [displayed, setDisplayed] = useState([]);
   const [search , setSearch] = useState("");
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
     setDisplayed(products);
   },[products]);
 
+  useEffect(() => {
+    console.log(query)
+  },[query])
   const searchHandler = () => {
-    console.log("search")
+    setQuery((query) => ({ ...query, search }))
   }
 
   const categoryHandler = (event) => {
@@ -27,7 +31,7 @@ function ProductsPages() {
     
     if (tagName !== 'LI') return;
 
-    console.log(categury)
+    setQuery((query) => ({ ...query, categury}));
 
 
   }
