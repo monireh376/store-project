@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import Loader from "../components/Loader";
 import { useProducts } from "../context/ProductContext";
 import styles from "./ProductsPages.module.css";
-import { createQueryObject, filterProducts, getInitialQuery, searchProducts } from "../helper/helper";
+import { filterProducts, getInitialQuery, searchProducts } from "../helper/helper";
 import SearchBox from "../components/SearchBox";
 import Sidebar from "../components/Sidebar";
 
