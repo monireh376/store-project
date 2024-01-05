@@ -11,7 +11,6 @@ import { filterProducts, getInitialQuery, searchProducts } from "../helper/helpe
 import SearchBox from "../components/SearchBox";
 import Sidebar from "../components/Sidebar";
 
-
 function ProductsPages() {
   const products = useProducts();
   
@@ -37,8 +36,6 @@ function ProductsPages() {
     setDisplayed(finalProducts);
   },[query])
 
-
-
   return (
     <>
       <SearchBox search={search} setSearch={setSearch} setQuery={setQuery} />
@@ -50,7 +47,7 @@ function ProductsPages() {
             <Card key={product.id} data={product} />
           ))}
         </div>
-        <Sidebar setQuery={setQuery}/>
+        <Sidebar query={query} setQuery={setQuery}/>
       </div>
     </>
   )
