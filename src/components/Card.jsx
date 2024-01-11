@@ -11,7 +11,6 @@ import { useCart } from "../context/CartContext";
 function Card({data}) {
     const {id, title, image, price} = data;
     const [state, dispatch] = useCart();
-    // console.log(state);
 
     const quantity = productQuantity(state, id);
    
@@ -53,15 +52,7 @@ function Card({data}) {
                   +
                 </button>
                 )
-              }
-              
-              
-
-              
-                
-                
-                
-                
+              }                
             </div>
         </div>
     </div>
